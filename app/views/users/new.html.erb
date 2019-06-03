@@ -1,0 +1,38 @@
+<%= form_for @user do |f| %>
+    <%= f.label :username %>
+    <%= f.text_field :username %> <br>
+    <%= f.label :email %>
+    <%= f.text_field :email %> <br>
+    <%= f.label :password_digest, 'Password' %>
+    <%= f.password_field :password_digest %> <br>
+    <%= f.submit 'Submit '%>
+<% end %>
+
+<%# commenting out the form_tag version %>
+<% if false %>
+    <%= form_tag("/users", method: "post") do %>
+        <%= label_tag(:username, "Username:") %>
+        <%= text_field_tag(:username) %>
+        <%= label_tag(:email, "Email:") %>
+        <%= text_field_tag(:email) %>
+        <%= label_tag(:password_digest, "Password:") %>
+        <%= password_field_tag(:password_digest) %>
+        <%= submit_tag("Submit") %>
+
+    <% end %>
+<% end %>
+
+
+<%# commenting out the original html form %>
+<% if false %>
+<form accept-charset="UTF-8" action="/users" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <label for="user[username]">Username:</label>
+    <input type="text" name="user[username]"><br>
+    <label for="user[email]">Email:</label>
+    <input type="text" name="user[email]"><br>
+    <label for="user[password_digest]">Password:</label>
+    <input type="password" name="user[password_digest]"><br>
+    <input type="submit" value="Submit">
+</form>
+<% end %>
